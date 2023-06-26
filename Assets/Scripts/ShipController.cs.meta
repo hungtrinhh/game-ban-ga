@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: eae0f9a52809d1a41b6edec1919200fc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - PrefapsBullet: {fileID: 5770029300168524363, guid: 9fafa936c90182844913dc76887b7bf9, type: 3}
+  - PreFapsShip: {fileID: 7125830367843971522, guid: 0d136d287c73ae54ab08bf364bdec3ef, type: 3}
+  - PoolBullet: {instanceID: 0}
+  - Holder: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

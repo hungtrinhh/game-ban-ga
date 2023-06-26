@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 762b8cec92f139a47997243b6e196b94
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ChickenPreFaps: {fileID: 5238379480898230109, guid: 33db9bcbb55ac594ebd168ce92b257d3, type: 3}
+  - ChickenPool: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
