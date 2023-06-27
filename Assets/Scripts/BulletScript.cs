@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class BulletScript : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -27,6 +26,7 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         TierBullet = ShipController.Instan.CurentTier;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = TierBullet.BulletTexture;
@@ -36,6 +36,9 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
         transform.Translate(Vector3.up * (Time.deltaTime * speed));
     }
 
@@ -46,8 +49,9 @@ public class BulletScript : MonoBehaviour
             return;
         }
 
-        //dispawm viên đạn trở về pool
 
+
+        //dispawm viên đạn trở về pool
 
         if (other.CompareTag("Chicken"))
         {
