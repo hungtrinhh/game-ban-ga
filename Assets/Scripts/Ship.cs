@@ -7,13 +7,13 @@ using Object = System.Object;
 
 public class Ship : MonoBehaviour
 {
-    [SerializeField] [Range(1, 10)] private float Speed;
+    [SerializeField][Range(1, 10)] private float Speed;
 
     [SerializeField] private Transform TransformShield;
 
     [SerializeField] private float TimeProtect = 5;
 
-    [Header("VFX")] [SerializeField] private GameObject ExplosionVFX;
+    [Header("VFX")][SerializeField] private GameObject ExplosionVFX;
     private Camera _camera;
 
     private bool isProtect = true;
@@ -73,7 +73,7 @@ public class Ship : MonoBehaviour
         this.transform.Translate(Vector3.up * (y * Time.deltaTime * this.Speed));
         this.transform.position =
             new Vector3(Mathf.Clamp(this.transform.position.x, TopleffPoint.x * -1f, TopleffPoint.x),
-                Mathf.Clamp(this.transform.position.y, TopleffPoint.y * -1f, TopleffPoint.y), 0.0f);
+                Mathf.Clamp(this.transform.position.y, TopleffPoint.y * -1f, TopleffPoint.y));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
