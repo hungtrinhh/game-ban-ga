@@ -1,13 +1,10 @@
 using System;
 using System.Collections;
-using System.Numerics;
-using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
-using Vector3 = UnityEngine.Vector3;
+
 
 public class Chicken : MonoBehaviour
 {
@@ -17,7 +14,6 @@ public class Chicken : MonoBehaviour
 
     [Space] [Header("Health of chicken")] [SerializeField]
     private float health = 5;
-
     private void Start()
     {
         StartCoroutine(SpawmEgg());
