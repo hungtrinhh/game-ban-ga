@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class SpamnerChicken : MonoBehaviour
@@ -11,14 +12,14 @@ public class SpamnerChicken : MonoBehaviour
 
     [Space] [SerializeField] private Transform ChickenPool;
 
-    [SerializeField] private int CountPresen;
+    [SerializeField] private int CountPresent;
 
-    [SerializeField] private GameObject BossPrefaps;
+    [FormerlySerializedAs("BossPrefaps")] [SerializeField] private GameObject BossPrefap;
     private Vector3 SpawmPosition;
 
-    private float GridSize = 1;
+    private float _gridSize = 1;
 
-    [SerializeField] private int CountNumberChicken;
+    [FormerlySerializedAs("CountNumberChicken")] [SerializeField] private int countNumberChicken;
 
 
     public static SpamnerChicken Instan;
@@ -36,16 +37,19 @@ public class SpamnerChicken : MonoBehaviour
         float width = height * Screen.width / Screen.height;
 
         /// get count of present to spawn present
-        CountPresen = Random.Range(1, 5);
-        Debug.Log($"CountPresen : {CountPresen}");
+        CountPresent = Random.Range(1, 5);
+        Debug.Log($"CountPresen : {CountPresent}");
 
+        
+        
         SpawmPosition = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0));
-        SpawmPosition.x += ((GridSize / 2 + (width / 2 / 2)));
-        SpawmPosition.y -= GridSize;
+        SpawmPosition.x += ((_gridSize / 2 + (width / 2 / 2)));
+        SpawmPosition.y -= _gridSize;
         SpawmPosition.z = 0;
-        spawmGridChicken(Mathf.FloorToInt(height / 2 / GridSize), Mathf.FloorToInt(width / GridSize / 1.5f));
+        spawmGridChicken(Mathf.FloorToInt(height / 2 / _gridSize), Mathf.FloorToInt(width / _gridSize / 1.5f));
     }
 
+    /// spawn grid chicken in the scene
     private void spawmGridChicken(int rowCount, int numberChicken)
     {
         float x = SpawmPosition.x;
@@ -53,26 +57,27 @@ public class SpamnerChicken : MonoBehaviour
         {
             for (int j = 0; j < numberChicken; j++)
             {
-                SpawmPosition.x += GridSize;
+                SpawmPosition.x += _gridSize;
                 Chicken newChicken = Instantiate(ChickenPreFaps, SpawmPosition, Quaternion.identity);
                 newChicken.transform.parent = ChickenPool;
-                ++CountNumberChicken;
+                ++countNumberChicken;
 
-                if (CountPresen > 0 && Random.Range(0, 2) == 1)
+                if (CountPresent > 0 && Random.Range(0, 2) == 1)
                 {
                     newChicken.PutPresent(PresenPreFaps);
-                    --CountPresen;
+                    --CountPresent;
                 }
             }
 
             SpawmPosition.x = x;
-            SpawmPosition.y -= GridSize;
+            SpawmPosition.y -= _gridSize;
         }
     }
 
+    /// when chicken death funtion is called
     public void DecreNumberChicken()
     {
-        if (--CountNumberChicken <= 10)
+        if (--countNumberChicken <= 10)
         {
             SummonBoss();
         }
@@ -80,6 +85,6 @@ public class SpamnerChicken : MonoBehaviour
 
     private void SummonBoss()
     {
-        BossPrefaps.SetActive(true);
+        BossPrefap.SetActive(true);
     }
 }
